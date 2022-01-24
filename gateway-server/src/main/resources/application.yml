@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: gateway-server
+  cloud:
+    gateway:
+      routes:
+      - id: image-service
+        uri: lb://image-service
+        predicates:
+          - Path= /api/image/**
+        filters:
+          - StripPrefix=2
+      - id: client-service
+        uri: lb://client-service
+        predicates:
+          - Path= /api/client/**
+        filters:
+        - StripPrefix=2
+server:
+  port: 8090
+  
+  
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+      
