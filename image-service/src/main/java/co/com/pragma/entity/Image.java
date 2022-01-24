@@ -8,7 +8,7 @@ import lombok.Data;
 
 @Data
 @Document("images")
-public class ImageMongo {
+public class Image {
 	
 	@Id
 	private String id;

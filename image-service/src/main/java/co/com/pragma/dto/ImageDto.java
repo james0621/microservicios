@@ -16,7 +16,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ImageMongoDto {
+public class ImageDto {
 	
 
 	private String id;
@@ -26,7 +26,7 @@ public class ImageMongoDto {
 	private String base64;
 	private Long docClient;
 	
-	public ImageMongoDto(MultipartFile file, Long docClient) throws IOException {
+	public ImageDto(MultipartFile file, Long docClient) throws IOException {
 		this.type = UtilImage.typeImage(file.getOriginalFilename());
 		this.name = UUID.randomUUID().toString() + "_" + file.getOriginalFilename();
 		this.size = file.getSize();
