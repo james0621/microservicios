@@ -1,4 +1,4 @@
-package co.com.pragma.util;
+package co.com.pragma.infrastructure.util;
 
 public class Message {
 	
