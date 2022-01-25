@@ -1,4 +1,4 @@
-package co.com.pragma.exception;
+package co.com.pragma.infrastructure.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

@@ -1,4 +1,4 @@
-package co.com.pragma.exception.message;
+package co.com.pragma.infrastructure.exception.message;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

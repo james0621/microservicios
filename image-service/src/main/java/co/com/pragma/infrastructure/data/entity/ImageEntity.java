@@ -1,4 +1,4 @@
-package co.com.pragma.entity;
+package co.com.pragma.infrastructure.data.entity;
 
 
 import org.springframework.data.annotation.Id;
@@ -8,7 +8,7 @@ import lombok.Data;
 
 @Data
 @Document("images")
-public class Image {
+public class ImageEntity {
 	
 	@Id
 	private String id;

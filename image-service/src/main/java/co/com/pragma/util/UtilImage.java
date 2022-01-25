@@ -1,6 +1,6 @@
 package co.com.pragma.util;
 
-import co.com.pragma.exception.ImageTypeIncompatibilityException;
+import co.com.pragma.infrastructure.exception.ImageTypeIncompatibilityException;
 
 public class UtilImage {
 	

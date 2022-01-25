@@ -7,5 +7,6 @@ public class Message {
 	public static final String DATA_NO_PRESENT = "No se encontraron datos";
 	public static final String DATA_DUPLICATE = "El documento que esta tratando de ingresar ya se encuentra registrado";
 	public static final String IMAGE_TYPE_NOT_FOUND = "El tipo de imagen es incorrecto. Los tipos permitidos son: .PNG, .JPG";
+	public static final String CONTACT_ADMINISTRATOR = "Ocurrio un error por favor contactar al administrador";
 
 }
