@@ -3,6 +3,7 @@ package co.com.pragma.application.repository;
 import co.com.pragma.domain.Client;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 public interface ClientRepository {
@@ -11,8 +12,8 @@ public interface ClientRepository {
     Client findById(Long id);
     Client findByDocTypeAndNumDoc(String docType, Long numDoc);
     List<Client> findByAgeGreatherThanEqual (Integer age);
-    Client save(Client client, MultipartFile file);
-    Client update(Client client, MultipartFile file, Long id);
+    Client save(Client client, MultipartFile file) throws IOException;
+    Client update(Client client, MultipartFile file, Long id) throws IOException;
     boolean delete(Long id);
 
 }

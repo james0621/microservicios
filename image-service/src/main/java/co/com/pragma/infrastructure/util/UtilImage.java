@@ -3,6 +3,8 @@ package co.com.pragma.infrastructure.util;
 import co.com.pragma.infrastructure.exception.ImageTypeIncompatibilityException;
 
 public class UtilImage {
+
+	private UtilImage(){}
 	
 	//Valido el tipo de la imagen solo se permite .png y .jpeg
 	public static void validateImageType(String type) {

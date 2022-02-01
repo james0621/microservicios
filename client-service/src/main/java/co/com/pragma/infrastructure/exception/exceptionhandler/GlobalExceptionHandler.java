@@ -1,5 +1,6 @@
 package co.com.pragma.infrastructure.exception.exceptionhandler;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -53,6 +54,8 @@ public class GlobalExceptionHandler {
                 case 3:
                     errorMessage = e.getMessage();
                     break;
+                default:
+                    break;
             }
             error = new ErrorMessage(errorMessage, HttpStatus.BAD_REQUEST.value(), request.getRequestURI());
             message = new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
@@ -74,11 +77,12 @@ public class GlobalExceptionHandler {
             MethodArgumentNotValidException mae = (MethodArgumentNotValidException) e;
             result = mae.getBindingResult();
         }
-        List<FieldError> fieldErrors = result.getFieldErrors();
+        List<FieldError> fieldErrors = new ArrayList<>();
+        if(result != null){
+            fieldErrors = result.getFieldErrors();
+        }
         StringBuilder message = new StringBuilder();
         fieldErrors.forEach(field -> message.append(field.getField() + ": " + field.getDefaultMessage() + ". "));
-        ErrorMessage error = new ErrorMessage(message.toString(), HttpStatus.BAD_REQUEST.value(),
-                uri);
-        return error;
+        return new ErrorMessage(message.toString(), HttpStatus.BAD_REQUEST.value(), uri);
     }
 }

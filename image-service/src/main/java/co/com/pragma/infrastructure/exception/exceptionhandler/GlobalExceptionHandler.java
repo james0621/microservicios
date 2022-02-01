@@ -1,10 +1,12 @@
 package co.com.pragma.infrastructure.exception.exceptionhandler;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
 import javax.servlet.http.HttpServletRequest;
 
+import co.com.pragma.infrastructure.util.Message;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.InvalidDataAccessResourceUsageException;
 import org.springframework.http.HttpStatus;
@@ -18,7 +20,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import co.com.pragma.infrastructure.exception.DataNoFoundException;
 import co.com.pragma.infrastructure.exception.message.ErrorMessage;
-import co.com.pragma.util.Message;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
@@ -52,6 +53,8 @@ public class GlobalExceptionHandler {
 				case 3:
 					errorMessage = e.getMessage();
 					break;
+				default:
+					break;
 			}
 			error = new ErrorMessage(errorMessage, HttpStatus.BAD_REQUEST.value(), request.getRequestURI());
 			message = new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
@@ -73,11 +76,12 @@ public class GlobalExceptionHandler {
 			MethodArgumentNotValidException mae = (MethodArgumentNotValidException) e;
 			result = mae.getBindingResult();
 		}
-		List<FieldError> fieldErrors = result.getFieldErrors();
+		List<FieldError> fieldErrors = new ArrayList<>();
+		if(result != null){
+			fieldErrors = result.getFieldErrors();
+		}
 		StringBuilder message = new StringBuilder();
 		fieldErrors.forEach(field -> message.append(field.getField() + ": " + field.getDefaultMessage() + ". "));
-		ErrorMessage error = new ErrorMessage(message.toString(), HttpStatus.BAD_REQUEST.value(),
-				uri);
-		return error;
+		return new ErrorMessage(message.toString(), HttpStatus.BAD_REQUEST.value(),uri);
 	}
 }

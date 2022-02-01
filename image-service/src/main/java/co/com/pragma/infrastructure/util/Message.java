@@ -1,6 +1,8 @@
 package co.com.pragma.infrastructure.util;
 
 public class Message {
+
+	private Message(){}
 	
 	public static final String NOT_FOUND_ATRIBUTE = "Los atributos de la entidad no concuerdan con los campos en base de datos";
 	public static final String NULL_DATA = "Esta intentando registrar campos obligatorios con valor null";

@@ -3,7 +3,6 @@ package co.com.pragma.application.service;
 import co.com.pragma.application.repository.ImageRepository;
 import co.com.pragma.domain.Image;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
@@ -29,8 +28,8 @@ public class ImageServiceImpl implements ImageService{
     }
 
     @Override
-    public Image save(MultipartFile file, Long docClient) throws IOException {
-        return imageRepository.save(file, docClient);
+    public Image save(Image image) throws IOException {
+        return imageRepository.save(image);
     }
 
     @Override

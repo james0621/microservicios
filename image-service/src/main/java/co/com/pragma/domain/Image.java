@@ -1,6 +1,8 @@
 package co.com.pragma.domain;
 
-import co.com.pragma.util.UtilImage;
+
+import co.com.pragma.infrastructure.util.UtilImage;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -11,6 +13,7 @@ import java.util.Base64;
 import java.util.UUID;
 
 @NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
 public class Image {

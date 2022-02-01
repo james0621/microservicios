@@ -1,5 +1,6 @@
 package co.com.pragma.infrastructure.rest.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import javax.validation.constraints.Min;
@@ -27,6 +28,8 @@ public class ClientDto {
     @Min(value = 18, message = "El cliente debe ser mayor de edad")
     private Integer age;
     private String cityBirth;
+
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private Date regisDate;
 
     //Relacion imagen mongo
